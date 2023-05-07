@@ -32,6 +32,9 @@ const handler = async (req, res) => {
         encodeURIComponent(req.query.code_verifier) +
         '&client_secret=' +
         encodeURIComponent(process.env.AZURE_CLIENT_SECRET ?? ''),
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
     }
   );
   res.end(res.status(authResponse.status).send(authResponse.text()));
