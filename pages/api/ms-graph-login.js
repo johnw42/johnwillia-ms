@@ -31,7 +31,11 @@ const handler = async (req, res) => {
       encodeURIComponent(process.env.AZURE_CLIENT_SECRET ?? ''),
     { method: 'post' }
   );
-  res.end(res.status(authResponse.status).send(authResponse.text()));
+  res.end(
+    res
+      .status(authResponse.status)
+      .send(authResponse.text() + process.env.AZURE_CLIENT_SECRET)
+  );
 };
 
 export default handler;
