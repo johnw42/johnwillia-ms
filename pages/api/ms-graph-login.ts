@@ -1,8 +1,10 @@
+import { NextApiRequest, NextApiResponse } from 'next';
+
 // https://nextjs.org/docs/pages/building-your-application/routing/api-routes
 const handler = async (
-  req,
-  res,
-) => {
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   const authResponse = await fetch(
     'https://login.microsoftonline.com/common/oauth2/v2.0/token' +
     '?client_id=' +
